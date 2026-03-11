@@ -1,7 +1,7 @@
 // AutoLux Car Detail Page — Dark Luxury Automotive
 // Full car detail with image gallery, specs, features, and contact form
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, Link } from "wouter";
 import {
   ArrowLeft, Zap, Gauge, Fuel, Settings, MapPin, Calendar, Activity,
@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { cars, formatPrice, formatMileage } from "@/lib/cars-data";
 import CarCard from "@/components/CarCard";
+import FinancingCalculator from "@/components/FinancingCalculator";
 import { toast } from "sonner";
 
 export default function CarDetail() {
@@ -271,6 +272,11 @@ export default function CarDetail() {
               </a>
             </div>
           </div>
+        </div>
+
+        {/* Financing Calculator */}
+        <div className="mb-16">
+          <FinancingCalculator carPrice={car.price} carName={`${car.brand} ${car.model}`} />
         </div>
 
         {/* Full specs + Features */}
